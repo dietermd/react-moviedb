@@ -8,10 +8,14 @@ export default function Header() {
   const [movies, setMovies] = useState<Movie[]>([])  
 
   useEffect(() => {
-    initTE({ Carousel })
     FetchUpcomingMovies()
     .then(movies => setMovies(movies))
   }, [])
+
+  useEffect(() => {
+    if (movies.length >0)
+      initTE({ Carousel })
+  }, [movies])
 
   return (
     <>
