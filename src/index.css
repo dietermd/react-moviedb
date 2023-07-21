@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.banner-swiper > .swiper-pagination > .swiper-pagination-bullet {
+  background-color: white;
+}
+
 .swiper-pagination-bullet-active {
-  background-color: red;
+  background-color: red !important;
 }
