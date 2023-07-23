@@ -38,23 +38,28 @@ function RenderMovieCarousel(movies: Movie[]) {
         {
           movies.map((movie, i) =>
             <SwiperSlide key={i}>
-              <img src={GetImageUrl(movie.backdrop_path)} className="absolute h-[600px] w-full brightness-50" alt="..." />
-              <div className="absolute h-full w-1/2 flex flex-col gap-8 justify-center px-32">
+              <div className="absolute h-full w-1/2 flex flex-col gap-8 justify-center px-4 z-10">
                 <div className="font-bold text-4xl text-white">{movie.title}</div>
                 <div className="text-white">{movie.overview}</div>
                 <div className="flex gap-2">
                   {
                     movie.genre_ids.map(genreId => 
-                      <div className="text-white bg-gray-300/50 rounded-lg px-2">
+                      <div className="text-white border-2 border-white rounded-lg px-2">
                         {Genres.get(genreId)}
                       </div>
                     )
                   }
                 </div>                
               </div>
+
+              <div className="banner-image-cover relative h-full w-3/4 float-right">
+                <div className="banner-inner-image-cover h-full w-full">
+                  <img src={GetImageUrl(movie.backdrop_path)} className="absolute h-full w-full object-cover mix-blend-overlay" alt="..." />
+                </div>
+                
+              </div>              
             </SwiperSlide>)
         }
-
       </Swiper>
     </>
   )
