@@ -5,11 +5,20 @@ const ImagesBaseURL: string = "https://image.tmdb.org/t/p/original"
 
 export const GetImageUrl = (imgPath: string): string  => ImagesBaseURL + imgPath
 
-export const FetchUpcomingMovies = async () => {
-  const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=${API_KEY}`)
+export const FetchMovieList = async (type: MovieListTypes) => {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}`)
   const json = await response.json()
   const movies = json.results as Movie[]
   return movies
+}
+
+export const GetFormatedDate = (date: string) => new Date(date).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
+
+export const enum MovieListTypes {
+  NowPlaying = "now_playing",
+  Popular = "popular",
+  TopRated = "top_rated",
+  Upcoming = "upcoming"
 }
 
 export const Genres = new Map<number, string>([
