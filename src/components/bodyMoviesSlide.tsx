@@ -8,9 +8,6 @@ import MovieCard from "./movieCard";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-
-
-
 interface BodyMoviesSlideProps {
   Title: string
   FetchFunction: (type: MovieListTypes) => Promise<Movie[]>
@@ -25,12 +22,10 @@ export default function BodyMoviesSlide(props: BodyMoviesSlideProps) {
       .then(movies => setMovies(movies))
   }, [])
 
-  
-
   return (
     <>
       <div className="flex flex-col gap-4">
-        <div className="text-white font-bold text-lg">{props.Title}</div>
+        <div className="text-white font-bold text-2xl">{props.Title}</div>
         <Swiper
           slidesPerView={'auto'}
           spaceBetween={30}
