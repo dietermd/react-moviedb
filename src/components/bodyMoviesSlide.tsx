@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 interface BodyMoviesSlideProps {
   Title: string
-  FetchFunction: (type: MovieListTypes) => Promise<Movie[]>
+  MovieListType: MovieListTypes
 }
 
 export default function BodyMoviesSlide(props: BodyMoviesSlideProps) {
@@ -18,7 +18,7 @@ export default function BodyMoviesSlide(props: BodyMoviesSlideProps) {
   const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
-    FetchMovieList(MovieListTypes.NowPlaying)
+    FetchMovieList(props.MovieListType)
       .then(movies => setMovies(movies))
   }, [])
 

@@ -1,7 +1,7 @@
 import Banner from "./components/bannner"
 import BodyMoviesSlide from "./components/bodyMoviesSlide"
 import Header from "./components/header"
-import { FetchMovieList, MovieListTypes } from "./utils/utils"
+import { MovieListTypes } from "./utils/utils"
 
 function App() {
   return (
@@ -10,10 +10,15 @@ function App() {
         <Header />
         <Banner />
 
-        <div className="flex flex-col mt-3 px-4">
+        <div className="flex flex-col mt-3 px-4 gap-5">
           <BodyMoviesSlide
             Title="Now Playing"
-            FetchFunction={() => FetchMovieList(MovieListTypes.NowPlaying)}
+            MovieListType={MovieListTypes.NowPlaying}
+          />
+
+          <BodyMoviesSlide
+            Title="Top Rated"
+            MovieListType={MovieListTypes.TopRated}
           />
         </div>
 
