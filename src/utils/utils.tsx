@@ -1,9 +1,14 @@
 import { Movie } from "../models/movie";
 import { API_KEY } from "./apiKey";
 
-const ImagesBaseURL: string = "https://image.tmdb.org/t/p/original"
+const ImagesBaseURL: string = "https://image.tmdb.org/t/p"
 
-export const GetImageUrl = (imgPath: string): string  => ImagesBaseURL + imgPath
+export const enum ImageSizes {
+  Original = "/original",
+  W500 = "/w500"
+}
+
+export const GetImageUrl = (imgPath: string, imgSize: ImageSizes): string  => ImagesBaseURL + imgSize + imgPath
 
 export const FetchMovieList = async (type: MovieListTypes) => {
   const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}`)

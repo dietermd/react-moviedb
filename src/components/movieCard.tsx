@@ -1,4 +1,4 @@
-import { GetFormatedDate, GetImageUrl } from "../utils/utils"
+import { GetFormatedDate, GetImageUrl, ImageSizes } from "../utils/utils"
 
 interface MovieCardProps {
   title: string
@@ -8,7 +8,7 @@ interface MovieCardProps {
 
 export default function MovieCard(props: MovieCardProps) {  
   
-  const posterUrl = GetImageUrl(props.poster_path)
+  const posterUrl = GetImageUrl(props.poster_path, ImageSizes.W500)
 
   return(
     <>

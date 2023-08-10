@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Movie } from "../models/movie"
-import { GetImageUrl, Genres, GetFormatedDate, FetchMovieList, MovieListTypes } from "../utils/utils"
+import { GetImageUrl, Genres, GetFormatedDate, FetchMovieList, MovieListTypes, ImageSizes } from "../utils/utils"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
 
@@ -97,7 +97,7 @@ function RenderMovieCarousel(movies: Movie[]) {
 
               <div className="banner-image-cover relative h-full w-full md:w-3/4 float-right">
                 <div className="banner-inner-image-cover h-full w-full">
-                  <img src={GetImageUrl(movie.backdrop_path)} className="absolute h-full w-full object-cover mix-blend-overlay" alt="..." />
+                  <img src={GetImageUrl(movie.backdrop_path, ImageSizes.Original)} className="absolute h-full w-full object-cover mix-blend-overlay" alt="..." />
                 </div>
                 
               </div>              
