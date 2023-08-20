@@ -19,8 +19,6 @@ export default function MovieCard(props: MovieCardProps) {
     img.src = posterUrl
   }, [])
 
-  console.log(props.title)
-
   return (
     imgLoaded ? RenderMovieCard() : <MovieCardLoading />
   )
