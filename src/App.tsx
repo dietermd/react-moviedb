@@ -1,4 +1,4 @@
-import Banner from "./components/bannner"
+import Banner from "./components/banner/bannner"
 import BodyMoviesSlide from "./components/bodyMoviesSlide"
 import Header from "./components/header"
 import { MovieListTypes } from "./utils/utils"
