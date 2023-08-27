@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Movie } from "../../models/movie"
-import { GetImageUrl, Genres, GetFormatedDate, FetchMovieList, MovieListTypes, ImageSizes } from "../../utils/utils"
+import { FetchMovieList, MovieListTypes } from "../../utils/utils"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
 

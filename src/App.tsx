@@ -1,5 +1,5 @@
 import Banner from "./components/banner/bannner"
-import BodyMoviesSlide from "./components/bodyMoviesSlide"
+import BodyMoviesSlide from "./components/movieSlider/movieSlider"
 import Header from "./components/header"
 import { MovieListTypes } from "./utils/utils"
 

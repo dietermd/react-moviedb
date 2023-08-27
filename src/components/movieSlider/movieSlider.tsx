@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Movie } from "../models/movie";
-import { FetchMovieList, MovieListTypes } from "../utils/utils";
+import { Movie } from "../../models/movie";
+import { FetchMovieList, MovieListTypes } from "../../utils/utils";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import MovieCard from "./movieCard";
-import MovieCardLoading from "./loading/movieCardLoading";
+import { FreeMode, Pagination } from 'swiper/modules';
+import MovieCard from "../movieCard";
+import MovieCardLoading from "./movieCardLoading";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -47,8 +47,9 @@ export default function BodyMoviesSlide(props: BodyMoviesSlideProps) {
         <Swiper
           slidesPerView={'auto'}
           spaceBetween={30}
+          freeMode={true}
           pagination={{dynamicBullets: true}}
-          modules={[Pagination]}
+          modules={[Pagination, FreeMode]}
           className="w-full h-[350px]"
         >
           {

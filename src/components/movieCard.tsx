@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { GetFormatedDate, GetImageUrl, ImageSizes } from "../utils/utils"
-import MovieCardLoading from "./loading/movieCardLoading"
+import MovieCardLoading from "./movieSlider/movieCardLoading"
 
 interface MovieCardProps {
   title: string
