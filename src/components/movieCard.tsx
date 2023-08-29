@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { GetFormatedDate, GetImageUrl, ImageSizes } from "../utils/utils"
 import MovieCardLoading from "./movieSlider/movieCardLoading"
 
-interface MovieCardProps {
+type MovieCardProps = {
   title: string
   release_date: string
   poster_path: string

@@ -1,7 +1,7 @@
 import { Movie } from "../../models/movie";
 import { Genres, GetFormatedDate } from "../../utils/utils";
 
-interface MovieInfoProps {
+type MovieInfoProps = {
   movie: Movie, 
   index: number
 }

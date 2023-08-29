@@ -9,7 +9,7 @@ import MovieCardLoading from "./movieCardLoading";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-interface BodyMoviesSlideProps {
+type BodyMoviesSlideProps = {
   Title: string
   MovieListType: MovieListTypes
 }
