@@ -11,7 +11,7 @@ import MovieInfoLoading from "./movieInfoLoading"
 import MovieImageCover from "./movieImageCover"
 
 export default function Banner() {
-  const [movies, setMovies] = useState<Movie[]>([])  
+  const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
     FetchMovieList(MovieListTypes.Popular)

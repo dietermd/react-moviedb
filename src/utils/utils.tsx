@@ -17,6 +17,13 @@ export const FetchMovieList = async (type: MovieListTypes) => {
   return movies
 }
 
+export const SearchMovies = async (query: string) => {
+  const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`)
+  const json = await response.json()
+  const movies = json.results as Movie[]
+  return movies
+}
+
 export const GetFormatedDate = (date: string) => new Date(date).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
 
 export const enum MovieListTypes {
