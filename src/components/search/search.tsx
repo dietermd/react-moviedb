@@ -12,7 +12,10 @@ export default function Search() {
     const timeoutId = setTimeout(() => {
       if (search !== '') {
         SearchMovies(search).then(movies => setMovies(movies))
-      }      
+      }
+      else {
+        setMovies([])
+      }
     }, 1000)
 
     return () => clearTimeout(timeoutId)

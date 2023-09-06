@@ -3,7 +3,7 @@ import { Movie } from "../../models/movie";
 import { FetchMovieList, MovieListTypes } from "../../utils/utils";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
-import MovieCard from "../movieCard";
+import MovieCard from "./movieCard";
 import MovieCardLoading from "./movieCardLoading";
 
 import 'swiper/css';
