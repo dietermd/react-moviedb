@@ -11,14 +11,19 @@ export const enum ImageSizes {
 export const GetImageUrl = (imgPath: string, imgSize: ImageSizes): string  => ImagesBaseURL + imgSize + imgPath
 
 export const FetchMovieList = async (type: MovieListTypes) => {
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}`)
+  const url = new URL(`https://api.themoviedb.org/3/movie/${type}`)
+  url.searchParams.append("api_key", API_KEY)
+  const response = await fetch(url)
   const json = await response.json()
   const movies = json.results as Movie[]
   return movies
 }
 
 export const SearchMovies = async (query: string) => {
-  const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`)
+  const url = new URL(`https://api.themoviedb.org/3/search/movie`)
+  url.searchParams.append("api_key", API_KEY)
+  url.searchParams.append("query", query)
+  const response = await fetch(url)
   const json = await response.json()
   const movies = json.results as Movie[]
   return movies
