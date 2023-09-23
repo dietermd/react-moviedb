@@ -71,7 +71,7 @@ export default function Search() {
         </div>
       </div>
 
-      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer" onClick={handleClickMobile}>
+      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer order-last" onClick={handleClickMobile}>
         <div className="flex justify-center items-center w-[42px] h-1/2 bg-transparent border-2 border-white rounded-lg outline-none">
           {svg}
         </div>          
