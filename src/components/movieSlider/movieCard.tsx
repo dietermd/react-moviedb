@@ -6,6 +6,7 @@ type MovieCardProps = {
   title: string
   release_date: string
   poster_path: string
+  vote_average: number
 }
 
 export default function MovieCard(props: MovieCardProps) {  
@@ -26,15 +27,53 @@ export default function MovieCard(props: MovieCardProps) {
   function RenderMovieCard() {
     return (
       <>
-        <div className="flex flex-col w-[150px]">
-          <a href="#">
-            <img src={posterUrl} className="w-full h-[225px] rounded-lg" />          
+        <div className="flex flex-col w-[150px]">          
+          <a href="#" className="h-[225px] relative">
+            <img src={posterUrl} className="w-full rounded-lg" />
+            <div className="absolute -bottom-3 -right-3">
+              {RenderScore(46, 2, props.vote_average)}
+            </div>
           </a>
           <div className="mt-2 px-[10px] text-sm text-center">
             <div className="font-bold text-white">{props.title}</div>
             <div className="text-white/50">{GetFormatedDate(props.release_date)}</div>
           </div>        
         </div>
+      </>
+    )
+  }
+
+  function RenderScore(size: number, strokeWidth: number, score: number) {
+    const center = size / 2;
+    const radius = (size / 2) - (strokeWidth * 2)
+    const circumference = radius * 2 * Math.PI
+    const strokeDashoffset = circumference - score / 10 * circumference;
+    return (
+      <>
+        <svg height={size} width={size} className="flex justify-center align-middle">
+          <circle
+            className="origin-center -rotate-90"
+            stroke="white"
+            strokeWidth={strokeWidth}
+            strokeDasharray={circumference + ' ' + circumference}
+            strokeDashoffset={strokeDashoffset}
+            fill="transparent"
+            r={radius}
+            cx={center}
+            cy={center}
+          />
+          <text
+            fontSize={"70%"}
+            x={center}
+            y={center}
+            text-anchor="middle"
+            stroke="white"
+            stroke-width="1px"
+            alignment-baseline="middle"
+          >
+            {score}
+          </text>
+        </svg>
       </>
     )
   }
