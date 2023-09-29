@@ -48,12 +48,12 @@ export default function MovieCard(props: MovieCardProps) {
     const radius = (size / 2) - (strokeWidth * 2)
     const circumference = radius * 2 * Math.PI
     const strokeDashoffset = circumference - score / 10 * circumference;
+    const fontSize = `${radius * 0.7}px`;
     return (
       <>
-        <svg height={size} width={size} className="flex justify-center align-middle">
+        <svg height={size} width={size} className="flex justify-center align-middle stroke-red-600">
           <circle
             className="origin-center -rotate-90"
-            stroke="white"
             strokeWidth={strokeWidth}
             strokeDasharray={circumference + ' ' + circumference}
             strokeDashoffset={strokeDashoffset}
@@ -63,11 +63,10 @@ export default function MovieCard(props: MovieCardProps) {
             cy={center}
           />
           <text
-            fontSize={"70%"}
+            fontSize={fontSize}
             x={center}
             y={center}
             text-anchor="middle"
-            stroke="white"
             stroke-width="1px"
             alignment-baseline="middle"
           >
