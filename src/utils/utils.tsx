@@ -1,4 +1,5 @@
 import { Movie } from "../models/movie";
+import { People } from "../models/people";
 import { API_KEY } from "./apiKey";
 
 const ImagesBaseURL: string = "https://image.tmdb.org/t/p"
@@ -20,13 +21,22 @@ export const FetchMovieList = async (type: MovieListTypes) => {
 }
 
 export const SearchMovies = async (query: string) => {
-  const url = new URL(`https://api.themoviedb.org/3/search/movie`)
+  const url = new URL('https://api.themoviedb.org/3/search/movie')
   url.searchParams.append("api_key", API_KEY)
   url.searchParams.append("query", query)
   const response = await fetch(url)
   const json = await response.json()
   const movies = json.results as Movie[]
   return movies
+}
+
+export const FetchPopularPeople = async () => {
+  const url = new URL('https://api.themoviedb.org/3/person/popular')
+  url.searchParams.append("api_key", API_KEY)
+  const response = await fetch(url)
+  const json = await response.json()
+  const popularPeople = json.results as People[]
+  return popularPeople
 }
 
 export const GetFormatedDate = (date: string) => new Date(date).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
