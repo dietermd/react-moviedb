@@ -1,7 +1,6 @@
 import Banner from "./components/banner/bannner"
-import MovieSlide from "./components/movieSlider/movieSlide"
 import Header from "./components/header"
-import { MovieListTypes } from "./utils/utils"
+import BodySliders from "./components/bodySliders"
 
 function App() {
   return (
@@ -11,18 +10,8 @@ function App() {
         <Banner />
 
         <div className="flex flex-col mt-3 px-4 gap-5">
-          <MovieSlide
-            Title="Now Playing"
-            MovieListType={MovieListTypes.NowPlaying}
-          />
-
-          <MovieSlide
-            Title="Top Rated"
-            MovieListType={MovieListTypes.TopRated}
-          />
-        </div>
-
-        
+          <BodySliders />
+        </div>        
       </div>
     </>
   )

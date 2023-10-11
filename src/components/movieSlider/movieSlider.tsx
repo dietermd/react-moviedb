@@ -14,7 +14,7 @@ type BodyMoviesSlideProps = {
   MovieListType: MovieListTypes
 }
 
-export default function MovieSlide(props: BodyMoviesSlideProps) {
+export default function MovieSlider(props: BodyMoviesSlideProps) {
 
   const [movies, setMovies] = useState<Movie[]>([])
 
