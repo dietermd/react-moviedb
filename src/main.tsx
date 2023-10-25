@@ -4,6 +4,7 @@ import App, { RootContent } from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './routes/errorPage.tsx'
+import MoviePage, { MoviePageLoader } from './routes/movies/moviePage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <RootContent />
+      },
+      {
+        path: "movies/:movieId",
+        element: <MoviePage />,
+        loader: MoviePageLoader
       }
     ]
   }

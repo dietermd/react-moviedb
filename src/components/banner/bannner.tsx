@@ -30,7 +30,7 @@ export default function Banner() {
           movies.map((movie, i) =>
             <SwiperSlide key={i}>              
               <MovieInfo movie={movie} index={i} />
-              <MovieImageCover backdrop_path={movie.backdrop_path} />             
+              <MovieImageCover backdrop_path={movie.backdrop_path} />
             </SwiperSlide>
           )
         }

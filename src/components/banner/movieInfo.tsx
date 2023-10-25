@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Movie } from "../../models/movie";
 import { Genres, GetFormatedDate } from "../../utils/utils";
 
@@ -31,12 +32,14 @@ export default function MovieInfo(props: MovieInfoProps) {
           }
         </div>
         <div>
-          <button className="rounded-full bg-red-500 font-bold py-2 px-4 flex items-center gap-1">
-            Detail
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="w-4 h-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
+          <Link to={`movies/${movie.id}`}>
+            <button className="rounded-full bg-red-500 font-bold py-2 px-4 flex items-center gap-1">
+              Detail
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </Link>          
         </div>
       </div>
     </>
