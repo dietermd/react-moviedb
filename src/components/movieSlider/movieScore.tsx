@@ -6,10 +6,11 @@ type MovieScoreProps = {
 
 export default function MovieScore(props: MovieScoreProps) {
   const {size, strokeWidth, score } = props;
+  const roundedScore = parseFloat(score.toFixed(1))
   const center = size / 2;
   const radius = (size / 2) - (strokeWidth * 2)
   const circumference = radius * 2 * Math.PI
-  const strokeDashoffset = circumference - score / 10 * circumference;
+  const strokeDashoffset = circumference - roundedScore / 10 * circumference;
   const fontSize = `${radius * 0.7}px`;
 
   return (
@@ -33,7 +34,7 @@ export default function MovieScore(props: MovieScoreProps) {
           strokeWidth="1px"
           alignmentBaseline="middle"
         >
-          {score}
+          {roundedScore}
         </text>
       </svg>
     </>
