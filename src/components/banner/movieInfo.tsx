@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Movie } from "../../models/movie";
-import { Genres, GetFormatedDate } from "../../utils/utils";
+import { GetFormatedDate } from "../../utils/utils";
+import GenreBadges from "./genreBadges";
 
 type MovieInfoProps = {
   movie: Movie, 
@@ -23,13 +24,7 @@ export default function MovieInfo(props: MovieInfoProps) {
         </div>
         <div className="hidden md:flex">{movie.overview}</div>
         <div className="hidden md:flex gap-2">
-          {
-            movie.genre_ids.map((genreId, i) => 
-              <div key={i} className="border-2 border-white rounded-lg px-2">
-                {Genres.get(genreId)}
-              </div>
-            )
-          }
+          <GenreBadges genres={movie.genre_ids} />
         </div>
         <div>
           <Link to={`movies/${movie.id}`}>
