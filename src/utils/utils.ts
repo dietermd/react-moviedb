@@ -40,13 +40,6 @@ export const FetchPopularPeople = async () => {
   return popularPeople
 }
 
-export const FetchMovieDetails = async (movieId: string): Promise<MovieDetails> => {
-  const url = new URL(`https://api.themoviedb.org/3/movie/${movieId}`)
-  url.searchParams.append("api_key", API_KEY)
-  const response = await fetch(url)
-  return response.json()
-}
-
 export const GetFormatedDate = (date: string) => new Date(date).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
 
 export const enum MovieListTypes {

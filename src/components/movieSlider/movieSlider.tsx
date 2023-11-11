@@ -27,6 +27,7 @@ export default function MovieSlider(props: BodyMoviesSlideProps) {
     movies.map((movie, i) =>
       <SwiperSlide key={i} className="w-auto inline-block">
         <MovieCard 
+          movie_id={movie.id}
           title={movie.title}
           release_date={movie.release_date}
           poster_path={movie.poster_path}

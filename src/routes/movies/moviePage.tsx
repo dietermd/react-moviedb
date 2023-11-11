@@ -1,13 +1,16 @@
 import { Await, defer, useAsyncValue, useLoaderData } from "react-router-dom";
-import { FetchMovieDetails, GetFormatedDate, GetImageUrl, ImageSizes } from "../../utils/utils";
+import { GetFormatedDate, GetImageUrl, ImageSizes } from "../../utils/utils";
 import { MovieDetails } from "../../models/movieDetails";
 import MovieScore from "../../components/movieSlider/movieScore";
 import { Suspense } from "react";
 import GenreBadges from "../../components/banner/genreBadges";
+import { API_KEY } from "../../utils/apiKey";
 
 export async function MoviePageLoader({ params }: any) {
   const movieId = params.movieId as string
-  const movieDetailsPromise = FetchMovieDetails(movieId)
+  const url = new URL(`https://api.themoviedb.org/3/movie/${movieId}`)
+  url.searchParams.append("api_key", API_KEY)
+  const movieDetailsPromise = fetch(url).then(res => res.json())
   return defer({movieDetails: movieDetailsPromise})
 }
 
@@ -96,7 +99,7 @@ function MovieDetailsBanner() {
 
   return (
     <>
-      <div className="relative h-[600px] w-full rounded-b-lg">
+      <div className="relative h-[600px] w-full rounded-b-lg min-w">
         <img 
             src={GetImageUrl(movieDetails.backdrop_path, ImageSizes.Original)}
             className="absolute h-full w-full object-cover blur-sm brightness-50" alt="..." 
@@ -116,7 +119,7 @@ function MovieDetailsBanner() {
         </div>
       </div>
 
-      <div className="md:hidden mt-4 flex flex-col gap-4 text-white">
+      <div className="md:hidden mt-4 flex flex-col gap-4 text-white pl-2">
         <MovieInfo movieDetails={movieDetails} />
       </div>
     </>
