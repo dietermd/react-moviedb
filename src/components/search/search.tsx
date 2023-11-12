@@ -23,13 +23,25 @@ export default function Search() {
 
   const searchInputFieldRef = useRef<HTMLInputElement>(null)
 
+  const hasMovies = movies.length > 0
+
+  function handleClick() {
+    const widthMd = 768
+    if (window.innerWidth >= widthMd) {
+      resetSearch()
+      return
+    }
+    
+    resetSearchSmall()
+  }
+
   function resetSearch() {
     setSearch('')
     searchInputFieldRef.current!.value = ''
   }
 
-  function handleClickMobile() {
-    if (hasMovies) {
+  function resetSearchSmall() {
+    if (hasMovies) {  
       resetSearch()
       return
     }
@@ -41,20 +53,6 @@ export default function Search() {
     }
   }
 
-  const hasMovies = movies.length > 0
-  const svg = hasMovies ?     
-    (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="cursor-pointer w-5 h-5" onClick={resetSearch}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    )
-    :
-    (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="pointer-events-none w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-      </svg>
-    )
-
   return (
     <>
       <div className="basis-8/12 h-full hidden md:flex justify-center items-center">
@@ -65,19 +63,35 @@ export default function Search() {
             onChange={(event) => setSearch(event.target.value)}
             ref={searchInputFieldRef}
           />
-          <div className="absolute mr-2">
-            {svg}
+          <div className="absolute mr-2" onClick={handleClick}>
+            <SearchSVG hasMovies={hasMovies} />
           </div>
         </div>
       </div>
 
-      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer order-last" onClick={handleClickMobile}>
+      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer order-last" onClick={handleClick}>
         <div className="flex justify-center items-center w-[42px] h-1/2 bg-transparent border-2 border-white rounded-lg outline-none">
-          {svg}
+          <SearchSVG hasMovies={hasMovies} />
         </div>          
       </div>
 
       { hasMovies && <SearchModal movies={movies} /> }
     </>
+  )
+}
+
+function SearchSVG(props: { hasMovies: boolean }) {
+  const { hasMovies } = props
+  let className = "pointer-events-none w-5 h-5"
+  let d = "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+  if (hasMovies) {
+    className = "cursor-pointer w-5 h-5"
+    d = "M6 18L18 6M6 6l12 12"
+  }
+
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className={className}>
+      <path strokeLinecap="round" strokeLinejoin="round" d={d} />
+    </svg>
   )
 }

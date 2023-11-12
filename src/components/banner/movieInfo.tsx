@@ -13,7 +13,7 @@ export default function MovieInfo(props: MovieInfoProps) {
 
   return (
     <>
-      <div className="absolute h-full w-full md:w-1/2 flex flex-col gap-4 justify-center px-4 z-10 text-white">
+      <div className="absolute h-full w-full md:w-3/5 flex flex-col gap-4 justify-center px-4 z-10 text-white">
         <div className="font-bold text-lg text-red-500">{`#${index + 1} Popular`}</div>
         <div className="font-bold text-4xl">{movie.title}</div>
         <div className="hidden md:flex gap-2">
