@@ -25,24 +25,24 @@ export default function Search() {
 
   const hasMovies = movies.length > 0
 
-  function handleClick() {
-    const widthMd = 768
-    if (window.innerWidth >= widthMd) {
-      resetSearch()
+  function resetSearch() {
+    const widthMD = 768
+    if (window.innerWidth >= widthMD) {
+      resetSearchMD()
       return
     }
     
-    resetSearchSmall()
+    resetSearchSM()
   }
 
-  function resetSearch() {
+  function resetSearchMD() {
     setSearch('')
     searchInputFieldRef.current!.value = ''
   }
 
-  function resetSearchSmall() {
+  function resetSearchSM() {
     if (hasMovies) {  
-      resetSearch()
+      resetSearchMD()
       return
     }
 
@@ -63,19 +63,19 @@ export default function Search() {
             onChange={(event) => setSearch(event.target.value)}
             ref={searchInputFieldRef}
           />
-          <div className="absolute mr-2" onClick={handleClick}>
+          <div className="absolute mr-2" onClick={resetSearch}>
             <SearchSVG hasMovies={hasMovies} />
           </div>
         </div>
       </div>
 
-      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer order-last" onClick={handleClick}>
+      <div className="basis-8/12 h-full md:hidden flex justify-end items-center cursor-pointer order-last" onClick={resetSearch}>
         <div className="flex justify-center items-center w-[42px] h-1/2 bg-transparent border-2 border-white rounded-lg outline-none">
           <SearchSVG hasMovies={hasMovies} />
         </div>          
       </div>
 
-      { hasMovies && <SearchModal movies={movies} /> }
+      { hasMovies && <SearchModal movies={movies} resetSearch={resetSearch} /> }
     </>
   )
 }
