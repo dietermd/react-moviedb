@@ -1,5 +1,4 @@
 import { Movie } from "../models/movie";
-import { MovieDetails } from "../models/movieDetails";
 import { People } from "../models/people";
 import { API_KEY } from "./apiKey";
 
