@@ -4,6 +4,7 @@ import PeopleCardLoading from "./peopleCardLoading";
 
 type PeopleCardProps = {
   name: string,
+  character? : string,
   profile_path: string
 }
 
@@ -18,8 +19,6 @@ export default function PeopleCard(props: PeopleCardProps) {
     img.src = profileUrl
   }, [])
 
-
-
   return (
     imgLoaded ? RenderPeopleCard() : <PeopleCardLoading />
   )
@@ -33,6 +32,7 @@ export default function PeopleCard(props: PeopleCardProps) {
           </a>
           <div className="mt-2 px-[10px] text-sm text-center">
             <div className="font-bold text-white">{props.name}</div>
+            { props.character && <div className="text-white italic">{props.character}</div>}
           </div>        
         </div>
       </>

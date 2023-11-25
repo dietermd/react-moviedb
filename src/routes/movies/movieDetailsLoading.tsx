@@ -1,4 +1,4 @@
-export default function MovieDetailsLoading() {
+export default function MoviePageLoading() {
   return (
     <>
       <div className="relative h-[600px] w-full rounded-b-lg">
