@@ -1,3 +1,7 @@
+import { FreeMode, Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import PeopleCardLoading from "../../components/peopleSlider/peopleCardLoading"
+
 export default function MoviePageLoading() {
   return (
     <>
@@ -17,7 +21,8 @@ export default function MoviePageLoading() {
       <div className="md:hidden mt-4 flex flex-col gap-4 pl-2 animate-pulse">
         <MovieInfoLoading />
       </div>
-      
+
+      <CastLoading />      
     </>
   )
 }
@@ -66,5 +71,31 @@ function MovieInfoLoading() {
         <div className="text-red-500 font-bold text-[20px]">?</div>
       </div>
     </>
+  )
+}
+
+function CastLoading() {
+  return (
+    <div className="flex flex-col mt-3 px-4 gap-5">
+      <div className="flex flex-col gap-4">
+        <div className="text-white font-bold text-2xl">Cast</div>
+        <Swiper
+          slidesPerView={'auto'}
+          spaceBetween={30}
+          freeMode={true}
+          pagination={{dynamicBullets: true}}
+          modules={[Pagination, FreeMode]}
+          className="w-full h-[350px]"
+        >
+          {
+            Array(15).fill(undefined).map((_, i) => 
+              <SwiperSlide key={i} className="w-auto inline-block">
+                <PeopleCardLoading />
+              </SwiperSlide>
+            )
+          }
+        </Swiper>
+      </div>
+    </div> 
   )
 }
