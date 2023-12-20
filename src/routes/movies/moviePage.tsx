@@ -5,6 +5,7 @@ import { API_KEY } from "../../utils/apiKey";
 import MovieDetailsBanner from "./movieDetailsBanner";
 import MoviePageLoading from "./movieDetailsLoading";
 import MovieCastSlider from "./movieCastSlider";
+import MovieTrailerSlider from "./movieTrailerSlider";
 
 export async function MoviePageLoader({ params }: any) {
   const movieId = params.movieId as string
@@ -22,9 +23,10 @@ export default function MoviePage() {
     <>
       <Suspense fallback={<MoviePageLoading />}>
         <Await resolve={data.movieDetails}>
-          <MovieDetailsBanner />
+          <MovieDetailsBanner /> 
           
           <div className="flex flex-col mt-3 px-4 gap-5">
+            <MovieTrailerSlider />
             <MovieCastSlider />
           </div>           
         </Await>
