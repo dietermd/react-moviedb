@@ -1,13 +1,11 @@
-import { useAsyncValue } from "react-router-dom"
-import { MovieDetails, Site, Type } from "../../models/movieDetails"
+import { Site, Type, Videos } from "../../models/movieDetails"
 import { Swiper } from "swiper/react"
 import { FreeMode, Pagination } from "swiper/modules"
 import { SwiperSlide } from "swiper/react"
 
-export default function MovieTrailerSlider() {
-  const movieDetails = useAsyncValue() as MovieDetails
-
-  const slides = movieDetails.videos.results
+export default function MovieTrailerSlider(props: { videos: Videos}) {
+  
+  const slides = props.videos.results
   .filter(x => x.site === Site.YouTube
     && x.type === Type.Trailer)
   .map((x, i) => 

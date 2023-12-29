@@ -1,11 +1,10 @@
-import { useAsyncValue } from "react-router-dom"
 import { MovieDetails } from "../../models/movieDetails"
 import { GetFormatedDate, GetImageUrl, ImageSizes } from "../../utils/utils"
 import GenreBadges from "../../components/banner/genreBadges"
 import MovieScore from "../../components/movieSlider/movieScore"
 
-export default function MovieDetailsBanner() {
-  const movieDetails = useAsyncValue() as MovieDetails
+export default function MovieDetailsBanner(props: { movieDetails: MovieDetails}) {
+  const { movieDetails } = props;
 
   return (
     <>

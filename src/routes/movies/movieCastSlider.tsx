@@ -1,13 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import PeopleCard from "../../components/peopleSlider/peopleCard";
 import { FreeMode, Pagination } from "swiper/modules";
-import { useAsyncValue } from "react-router-dom";
-import { MovieDetails } from "../../models/movieDetails";
+import { Credits } from "../../models/movieDetails";
 
-export default function MovieCastSlider() {
-  const movieDetails = useAsyncValue() as MovieDetails
-
-  const slides = movieDetails.credits.cast.filter(p => p.profile_path).map((person, i) => 
+export default function MovieCastSlider(props: { credits: Credits }) {
+  
+  const slides = props.credits.cast.filter(p => p.profile_path).map((person, i) => 
     <SwiperSlide key={i} className="w-auto inline-block">
       <PeopleCard name={person.name} character={person.character} profile_path={person.profile_path!} />
     </SwiperSlide>

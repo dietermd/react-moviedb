@@ -23,12 +23,19 @@ export default function MoviePage() {
     <>
       <Suspense fallback={<MoviePageLoading />}>
         <Await resolve={data.movieDetails}>
-          <MovieDetailsBanner /> 
-          
-          <div className="flex flex-col mt-3 px-4 gap-5">
-            <MovieTrailerSlider />
-            <MovieCastSlider />
-          </div>           
+          {
+            (movieDetails: MovieDetails) =>
+              (
+                <>
+                  <MovieDetailsBanner movieDetails={movieDetails}/>
+
+                  <div className="flex flex-col mt-3 px-4 gap-5">
+                    <MovieTrailerSlider videos={movieDetails.videos}/>
+                    <MovieCastSlider credits={movieDetails.credits}/>
+                  </div>                
+                </>
+              )
+          }
         </Await>
       </Suspense>
     </>
