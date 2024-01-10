@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-src/utils/apiKey.tsx
+src/utils/apiKey.ts
 
 # Editor directories and files
 .vscode/*
