@@ -1,4 +1,5 @@
 import { Movie } from "../models/movie";
+import { MovieDetails } from "../models/movieDetails";
 import { People } from "../models/people";
 import { API_KEY } from "./apiKey";
 
@@ -37,6 +38,14 @@ export const FetchPopularPeople = async () => {
   const json = await response.json()
   const popularPeople = json.results as People[]
   return popularPeople
+}
+
+export const FetchMovieDetailsPromise = (movieId: string): Promise<MovieDetails> => {
+  const url = new URL(`https://api.themoviedb.org/3/movie/${movieId}`)
+  url.searchParams.append("api_key", API_KEY)
+  url.searchParams.append("append_to_response", "credits,videos")
+  const movieDetailsPromise = fetch(url).then(res => res.json())
+  return movieDetailsPromise
 }
 
 export const GetFormatedDate = (date: string) => new Date(date).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
