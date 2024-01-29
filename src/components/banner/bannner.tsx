@@ -1,40 +1,24 @@
-import { useEffect, useState } from "react"
 import { Movie } from "../../models/movie"
-import { FetchMovieList, MovieListTypes } from "../../utils/utils"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper/modules"
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import MovieInfo from "./movieInfo"
-import MovieInfoLoading from "./movieInfoLoading"
 import MovieImageCover from "./movieImageCover"
+import { Pagination } from "swiper/modules";
 
-export default function Banner() {
-  const [movies, setMovies] = useState<Movie[]>([])
+export default function Banner(props: {movies: Movie[]}) {
 
-  useEffect(() => {
-    FetchMovieList(MovieListTypes.Popular)
-      .then(movies => setMovies(movies))
-  }, [])
+  const slides = props.movies.map((movie, i) =>
+      <SwiperSlide key={i}>              
+        <MovieInfo movie={movie} index={i} />
+        <MovieImageCover backdrop_path={movie.backdrop_path} />
+      </SwiperSlide>
+  )  
 
   return (
-    <>
-      <Swiper pagination={true} modules={[Pagination]} className="banner-swiper h-[600px] w-full rounded-b-lg">
-        {
-          movies.length === 0 ?
-          <SwiperSlide>
-            <MovieInfoLoading />
-          </SwiperSlide>          
-          :
-          movies.map((movie, i) =>
-            <SwiperSlide key={i}>              
-              <MovieInfo movie={movie} index={i} />
-              <MovieImageCover backdrop_path={movie.backdrop_path} />
-            </SwiperSlide>
-          )
-        }
-      </Swiper>
-    </>
+    <Swiper pagination={true} modules={[Pagination]} className="banner-swiper h-[600px] w-full rounded-b-lg">
+      { slides }
+    </Swiper>
   )
 }

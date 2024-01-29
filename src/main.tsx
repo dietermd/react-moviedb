@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App, { RootContent } from './App.tsx'
+import App, { RootContent, RootContentLoader } from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './routes/errorPage.tsx'
@@ -14,7 +14,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RootContent />
+        element: <RootContent />,
+        loader: RootContentLoader
       },
       {
         path: "movies/:movieId",

@@ -21,6 +21,13 @@ export const FetchMovieList = async (type: MovieListTypes) => {
   return movies
 }
 
+export const FetchMovieListPromise = (type: MovieListTypes): Promise<Movie[]> => {
+  const url = new URL(`https://api.themoviedb.org/3/movie/${type}`)
+  url.searchParams.append("api_key", API_KEY)
+  const movieListPromise = fetch(url).then(res => res.json()).then(json => json.results)
+  return movieListPromise
+}
+
 export const SearchMovies = async (query: string) => {
   const url = new URL('https://api.themoviedb.org/3/search/movie')
   url.searchParams.append("api_key", API_KEY)
