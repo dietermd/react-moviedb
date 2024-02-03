@@ -1,34 +1,18 @@
 import { useEffect, useState } from "react"
 import { People } from "../../models/people";
-import { FetchPopularPeople } from "../../utils/utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from 'swiper/modules';
-import PeopleCardLoading from "./peopleCardLoading";
 import PeopleCard from "./peopleCard";
 
-export default function PeopleSlider() {
-  
-  const [popularPeople, setPopularPeople] = useState<People[]>([]);
+export default function PeopleSlider(props: { people: People[] }) {
 
-  useEffect(() => {
-    FetchPopularPeople()
-      .then(people => setPopularPeople(people))
-  }, [])
-
-  const slides = popularPeople.length > 0 ?
-  popularPeople.map((person, i) => 
+  const slides = props.people.map((person, i) => 
   <SwiperSlide key={i} className="w-auto inline-block">
     <PeopleCard
       name={person.name}
       profile_path={person.profile_path}
     />
   </SwiperSlide>
-  )
-  :
-  Array(15).fill(undefined).map((_, i) => 
-    <SwiperSlide key={i} className="w-auto inline-block">
-      <PeopleCardLoading />
-    </SwiperSlide>
   )
 
   return (

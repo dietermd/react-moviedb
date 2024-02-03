@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import { Movie } from "../models/movie";
 import { MovieDetails } from "../models/movieDetails";
 import { People } from "../models/people";
@@ -28,6 +29,13 @@ export const FetchMovieListPromise = (type: MovieListTypes): Promise<Movie[]> =>
   return movieListPromise
 }
 
+export const FetchPopularPeoplePromise = async (): Promise<People[]> => {
+  const url = new URL('https://api.themoviedb.org/3/person/popular')
+  url.searchParams.append("api_key", API_KEY)
+  const popularPeoplePromisse = fetch(url).then(res => res.json()).then(json => json.results)
+  return popularPeoplePromisse
+}
+
 export const SearchMovies = async (query: string) => {
   const url = new URL('https://api.themoviedb.org/3/search/movie')
   url.searchParams.append("api_key", API_KEY)
@@ -36,15 +44,6 @@ export const SearchMovies = async (query: string) => {
   const json = await response.json()
   const movies = json.results as Movie[]
   return movies
-}
-
-export const FetchPopularPeople = async () => {
-  const url = new URL('https://api.themoviedb.org/3/person/popular')
-  url.searchParams.append("api_key", API_KEY)
-  const response = await fetch(url)
-  const json = await response.json()
-  const popularPeople = json.results as People[]
-  return popularPeople
 }
 
 export const FetchMovieDetailsPromise = (movieId: string): Promise<MovieDetails> => {
