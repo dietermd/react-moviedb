@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
-import { People } from "../../models/people";
+import { Person } from "../../models/person";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from 'swiper/modules';
 import PeopleCard from "./peopleCard";
 
-export default function PeopleSlider(props: { people: People[] }) {
+export default function PeopleSlider(props: { people: Person[] }) {
 
   const slides = props.people.map((person, i) => 
   <SwiperSlide key={i} className="w-auto inline-block">
@@ -17,9 +16,7 @@ export default function PeopleSlider(props: { people: People[] }) {
 
   return (
     <>
-      <div className="flex flex-col gap-4">
-        <div className="text-white font-bold text-2xl">Popular People</div>
-        <Swiper
+      <Swiper
           slidesPerView={'auto'}
           spaceBetween={30}
           freeMode={true}
@@ -31,7 +28,6 @@ export default function PeopleSlider(props: { people: People[] }) {
             slides
           }
         </Swiper>
-      </div>
     </>
   )
 }

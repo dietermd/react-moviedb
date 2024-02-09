@@ -1,7 +1,7 @@
 import { json } from "react-router-dom";
 import { Movie } from "../models/movie";
 import { MovieDetails } from "../models/movieDetails";
-import { People } from "../models/people";
+import { Person } from "../models/person";
 import { API_KEY } from "./apiKey";
 
 const ImagesBaseURL: string = "https://image.tmdb.org/t/p"
@@ -29,7 +29,7 @@ export const FetchMovieListPromise = (type: MovieListTypes): Promise<Movie[]> =>
   return movieListPromise
 }
 
-export const FetchPopularPeoplePromise = async (): Promise<People[]> => {
+export const FetchPopularPeoplePromise = async (): Promise<Person[]> => {
   const url = new URL('https://api.themoviedb.org/3/person/popular')
   url.searchParams.append("api_key", API_KEY)
   const popularPeoplePromisse = fetch(url).then(res => res.json()).then(json => json.results)

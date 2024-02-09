@@ -1,6 +1,6 @@
 import { Movie } from "./movie";
 
-export type People = {
+export type Person = {
   adult:                boolean;
   gender:               number;
   id:                   number;

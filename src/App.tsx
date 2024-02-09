@@ -8,7 +8,7 @@ import { Movie } from "./models/movie"
 import MovieSlider from "./components/movieSlider/movieSlider"
 import MovieSliderLoading from "./components/movieSlider/movieSliderLoading"
 import PeopleCardLoading from "./components/peopleSlider/peopleCardLoading"
-import { People } from "./models/people"
+import { Person } from "./models/person"
 import PeopleSlider from "./components/peopleSlider/peopleSlider"
 
 export default function App() {
@@ -36,7 +36,7 @@ export async function RootContentLoader() {
 }
 
 export function RootContent() {
-  const data = useLoaderData() as { popularMovieList: Promise<Movie[]>, nowPlayingMovieList: Promise<Movie[]>, topRatedMovieList: Promise<Movie[]>, popularPeople: Promise<People[]> };
+  const data = useLoaderData() as { popularMovieList: Promise<Movie[]>, nowPlayingMovieList: Promise<Movie[]>, topRatedMovieList: Promise<Movie[]>, popularPeople: Promise<Person[]> };
 
   return (
     <>
@@ -77,7 +77,7 @@ export function RootContent() {
           <Suspense fallback={<PeopleCardLoading />}>
             <Await resolve={data.popularPeople}>
               {
-                (popularPeople: People[]) => <PeopleSlider people={popularPeople} />
+                (popularPeople: Person[]) => <PeopleSlider people={popularPeople} />
               }
             </Await>
           </Suspense>
