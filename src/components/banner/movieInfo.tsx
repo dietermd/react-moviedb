@@ -27,7 +27,7 @@ export default function MovieInfo(props: MovieInfoProps) {
           <GenreBadges genres={movie.genre_ids} />
         </div>
         <div>
-          <Link to={`movies/${movie.id}`}>
+          <Link to={`movie/${movie.id}`}>
             <button className="rounded-full bg-red-500 font-bold py-2 px-4 flex items-center gap-1">
               Detail
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="w-4 h-4">

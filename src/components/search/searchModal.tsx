@@ -12,7 +12,7 @@ export default function SearchModal(props: SearchModalProps) {
 
   function navigateToMoviePage(movieId: number) {
     props.resetSearch()
-    navigate(`movies/${movieId}`)
+    navigate(`movie/${movieId}`)
   }
 
   return (

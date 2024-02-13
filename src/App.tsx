@@ -36,7 +36,13 @@ export async function RootContentLoader() {
 }
 
 export function RootContent() {
-  const data = useLoaderData() as { popularMovieList: Promise<Movie[]>, nowPlayingMovieList: Promise<Movie[]>, topRatedMovieList: Promise<Movie[]>, popularPeople: Promise<Person[]> };
+  const data = useLoaderData() as
+  {
+    popularMovieList: Promise<Movie[]>,
+    nowPlayingMovieList: Promise<Movie[]>,
+    topRatedMovieList: Promise<Movie[]>,
+    popularPeople: Promise<Person[]>
+  };
 
   return (
     <>
