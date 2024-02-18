@@ -5,6 +5,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './routes/errorPage.tsx'
 import MoviePage, { MoviePageLoader } from './routes/movie/moviePage.tsx'
+import PersonPage, { PersonPageLoader } from './routes/person/personPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
         path: "movie/:movieId",
         element: <MoviePage />,
         loader: MoviePageLoader
+      },
+      {
+        path: "person/:personId",
+        element: <PersonPage />,
+        loader: PersonPageLoader
       }
     ]
   }

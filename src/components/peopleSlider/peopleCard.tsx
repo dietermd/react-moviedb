@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { GetImageUrl, ImageSizes } from "../../utils/utils"
 import PeopleCardLoading from "./peopleCardLoading";
+import { Link } from "react-router-dom";
 
 type PeopleCardProps = {
+  id: number,
   name: string,
   character? : string,
   profile_path: string
@@ -26,15 +28,15 @@ export default function PeopleCard(props: PeopleCardProps) {
   function RenderPeopleCard() {
     return (
       <>
-        <div className="flex flex-col w-[150px]">          
-          <a href="#" className="h-[225px] relative">
+        <Link to={`/person/${props.id}`} className="flex flex-col w-[150px]">          
+          <div className="h-[225px] relative">
             <img src={profileUrl} className="w-full rounded-lg" />
-          </a>
+          </div>
           <div className="mt-2 px-[10px] text-sm text-center">
             <div className="font-bold text-white">{props.name}</div>
             { props.character && <div className="text-white italic">{props.character}</div>}
           </div>        
-        </div>
+        </Link>
       </>
     )
   }

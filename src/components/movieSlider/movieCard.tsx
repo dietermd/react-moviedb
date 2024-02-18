@@ -30,7 +30,7 @@ export default function MovieCard(props: MovieCardProps) {
   function RenderMovieCard() {
     return (
       <>
-        <Link to={`movie/${props.movie_id}`} className="flex flex-col w-[150px]">          
+        <Link to={`/movie/${props.movie_id}`} className="flex flex-col w-[150px]">          
           <div className="h-[225px] relative">
             <img src={posterUrl} className="w-full rounded-lg" />
             <div className="absolute -bottom-3 -right-3">

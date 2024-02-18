@@ -8,6 +8,7 @@ export default function PeopleSlider(props: { people: Person[] }) {
   const slides = props.people.map((person, i) => 
   <SwiperSlide key={i} className="w-auto inline-block">
     <PeopleCard
+      id={person.id}
       name={person.name}
       profile_path={person.profile_path}
     />

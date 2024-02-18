@@ -7,7 +7,7 @@ export default function MovieCastSlider(props: { credits: Credits }) {
   
   const slides = props.credits.cast.filter(p => p.profile_path).map((person, i) => 
     <SwiperSlide key={i} className="w-auto inline-block">
-      <PeopleCard name={person.name} character={person.character} profile_path={person.profile_path!} />
+      <PeopleCard id={person.id} name={person.name} character={person.character} profile_path={person.profile_path!} />
     </SwiperSlide>
   )
 
