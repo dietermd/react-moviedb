@@ -92,3 +92,10 @@ export const GenresMap = new Map<number, string>([
   [10752, "War"],
   [37, "Western"]
 ])
+
+export const GenderMap = new Map<number, string>([
+  [0,	"Not set / not specified"],
+  [1,	"Female"],
+  [2, "Male"],
+  [3, "Non-binary"]
+])
