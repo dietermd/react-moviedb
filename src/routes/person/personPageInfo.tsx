@@ -2,7 +2,25 @@ import { PersonDetails } from "../../models/personDetails";
 import { GenderMap, GetFormatedDate } from "../../utils/utils";
 
 export default function PersonPageInfo(props: { personDetails: PersonDetails }) {
-  const {personDetails} = props;
+  const { personDetails } = props;
+
+  const movieCredits = personDetails.movie_credits.cast
+    .filter(x => x.release_date)
+    .sort((a, b) => new Date(b.release_date).valueOf() - new Date(a.release_date).valueOf())
+    .map((movie, i) => {
+      const even = i % 2 === 0;
+      let className = "flex align-middle justify-between p-4"
+      if (even) {
+        className += " backdrop-brightness-125";
+      }
+
+      return (
+        <div className={className}>
+          <span>{`${new Date(movie.release_date).getUTCFullYear()} - ${movie.title}`}</span>          
+          <span className="text-white/60">{movie.character ? `as ${movie.character}` : ""}</span>
+        </div>
+      )
+  })
 
   return (
     <>
@@ -37,8 +55,8 @@ export default function PersonPageInfo(props: { personDetails: PersonDetails }) 
               </div>
             </div>
 
-            <div className="w-full md:w-2/3 flex flex-col gap-4 justify-center text-white pr-4">
-              
+            <div className="w-full md:w-2/3 flex flex-col justify-center pr-4 text-white">
+              { movieCredits }
             </div>
         </div>
       

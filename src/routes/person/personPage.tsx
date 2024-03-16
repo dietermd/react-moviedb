@@ -3,7 +3,7 @@ import { FetchPersonDetailsPromise } from "../../utils/utils"
 import { PersonDetails } from "../../models/personDetails";
 import { Suspense } from "react";
 import PersonPageBanner from "./personPageBanner";
-import PersonPageInfo from "./personPageinfo";
+import PersonPageInfo from "./personPageInfo";
 
 export async function PersonPageLoader({ params }: any) {
   const personId = params.personId as string
