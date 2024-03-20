@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PersonDetails } from "../../models/personDetails";
 import { GenderMap, GetFormatedDate } from "../../utils/utils";
 
@@ -15,10 +16,10 @@ export default function PersonPageInfo(props: { personDetails: PersonDetails }) 
       }
 
       return (
-        <div className={className}>
+        <Link to={`/movie/${movie.id}`} className={className}>
           <span>{`${new Date(movie.release_date).getUTCFullYear()} - ${movie.title}`}</span>          
           <span className="text-white/60">{movie.character ? `as ${movie.character}` : ""}</span>
-        </div>
+        </Link>
       )
   })
 
