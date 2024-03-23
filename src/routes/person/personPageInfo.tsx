@@ -10,13 +10,13 @@ export default function PersonPageInfo(props: { personDetails: PersonDetails }) 
     .sort((a, b) => new Date(b.release_date).valueOf() - new Date(a.release_date).valueOf())
     .map((movie, i) => {
       const even = i % 2 === 0;
-      let className = "flex align-middle justify-between p-4"
+      let className = "flex align-middle justify-between p-4 hover:backdrop-brightness-200"
       if (even) {
         className += " backdrop-brightness-125";
       }
 
       return (
-        <Link to={`/movie/${movie.id}`} className={className}>
+        <Link key={i} to={`/movie/${movie.id}`} className={className}>
           <span>{`${new Date(movie.release_date).getUTCFullYear()} - ${movie.title}`}</span>          
           <span className="text-white/60">{movie.character ? `as ${movie.character}` : ""}</span>
         </Link>
@@ -56,8 +56,11 @@ export default function PersonPageInfo(props: { personDetails: PersonDetails }) 
               </div>
             </div>
 
-            <div className="w-full md:w-2/3 flex flex-col justify-center pr-4 text-white">
-              { movieCredits }
+            <div className="w-full md:w-2/3 flex flex-col gap-4 p-4 md:p-0 md:pr-4 text-white">
+              <div className="font-bold text-2xl">Credits</div>
+              <div className="flex flex-col justify-center">
+                { movieCredits }
+              </div>
             </div>
         </div>
       

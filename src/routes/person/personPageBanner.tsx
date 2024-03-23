@@ -5,8 +5,8 @@ import { Pagination } from "swiper/modules";
 
 export default function PersonPageBanner(props: {personDetails: PersonDetails}) {
   const { personDetails } = props; 
-  const imageSlides = personDetails.images.profiles.map(x =>
-    <SwiperSlide className="flex justify-center items-center">
+  const imageSlides = personDetails.images.profiles.map((x, i) =>
+    <SwiperSlide key={i} className="flex justify-center items-center">
       <img
         src={GetImageUrl(x.file_path, ImageSizes.W500)}
         className="w-[250px] h-[400px] rounded-lg"

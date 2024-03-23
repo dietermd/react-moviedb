@@ -13,7 +13,6 @@ export async function PersonPageLoader({ params }: any) {
 
 export default function PersonPage() {
   const data = useLoaderData() as { personDetails: Promise<PersonDetails> };
-  console.log(data)
   return (
     <>
       <Suspense fallback={<h2>Loading...</h2>}>
